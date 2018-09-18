@@ -1,19 +1,18 @@
 import React from 'react'
 import {ApolloProvider} from 'react-apollo'
-import Page from './Page'
+import {ThemeProvider} from 'styled-components'
+
 import client from './apollo'
-import styles from 'App.scss'
+import theme from './theme'
+import GlobalStyles from './components/GlobalStyles'
+import CompaniesOverview from './pages/CompaniesOverview'
 
 const App = () =>
-  <div className={styles.main}>
-    <div className={styles.header}>
-      VESTBERRY TEST ASSIGNMENT
-    </div>
-    <div className={styles.content}>
-      <ApolloProvider client={client}>
-        <Page />
-      </ApolloProvider>
-    </div>
-  </div>
+  <ThemeProvider theme={theme}>
+    <ApolloProvider client={client}>
+      <CompaniesOverview />
+      <GlobalStyles />
+    </ApolloProvider>
+  </ThemeProvider>
 
 export default App
