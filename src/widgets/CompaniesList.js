@@ -7,13 +7,17 @@ import {Row, Column} from '../components/Grid'
 import Widget, {Header} from '../components/Widget'
 import AddCompany from '../components/AddCompany'
 
-const Table = styled.div`
-  min-width: 650px;
-`
-
 const List = styled.div`
   border-bottom: 1px solid ${p => p.theme.divider};
-  overflow: scroll;
+`
+
+const Table = styled.div`
+  overflow: auto;
+  
+  ${Header}, ${List} {
+    min-width: 650px;
+    box-sizing: border-box;
+  }
 `
 
 const RowWrapper = styled.div`
