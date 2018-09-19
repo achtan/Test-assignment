@@ -12,8 +12,8 @@ const modalStyles = {
   content: {
     position: 'absolute',
     top: '70px',
-    left: '70px',
-    right: '70px',
+    left: '5vw',
+    right: '5vw',
     bottom: 'auto',
     background: 'white',
     overflow: 'auto',
