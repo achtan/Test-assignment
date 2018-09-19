@@ -63,7 +63,7 @@ const CompaniesByInvestmentSize = ({companies}) => {
           </PieWrapper>
         </Column>
         <Column width={[1, 1 / 2]}>
-          <Row mt={4}>
+          <Row mt={4} mb={3} mx={[2, 0]}>
             {data.map(v => (
               <Column key={v.name + v.color} width={[1/2]} my={2}>
                 <Flex alignItems="center">
