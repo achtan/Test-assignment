@@ -6,6 +6,8 @@ export default createGlobalStyle`
     font-family: Arial;
     font-size: 1rem;
     background-color: rgb(230, 233, 245);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   input:focus,

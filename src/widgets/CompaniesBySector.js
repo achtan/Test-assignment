@@ -7,14 +7,20 @@ import Widget from '../components/Widget'
 import {Title} from '../components/Typography'
 
 const SectorWrapper = styled(Column)`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 1rem 0;
-  border-right: 1px solid ${p => p.theme.primary};
+
   
-  :last-child {
-    border-right: 0;
+  ::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    width: 1px;
+    height: 100%;
+    background-color: ${p => p.theme.primary};
   }
 `
 
@@ -53,7 +59,7 @@ const CompaniesBySector = ({companies}) => {
 
   return (
     <Widget label="companies by investment size">
-      <Row mx={0}>
+      <Row mx={0} style={{overflow: 'hidden'}}>
         {data.map((s, i) => (
           <SectorWrapper key={s.title} width={[ 1 / 2, 1 / 4 ]} isLast={i + 1 === data.length}>
             <Count>{s.count}</Count>
