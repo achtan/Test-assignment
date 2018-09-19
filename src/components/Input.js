@@ -39,7 +39,7 @@ class InputControl extends React.Component {
   changeValue = (event) => this.props.setValue(event.currentTarget.value)
 
   render () {
-    const {label, name, type = 'text', min, getValue, placeholder, symbol} = this.props
+    const {label, name, type = 'text', min, max, getValue, placeholder, symbol} = this.props
 
     return (
       <Wrapper>
@@ -52,6 +52,7 @@ class InputControl extends React.Component {
             value={getValue() || ''}
             placeholder={placeholder}
             min={min}
+            max={max}
           />
           {symbol && <SymbolPosition>{symbol}</SymbolPosition>}
         </InputStyled>

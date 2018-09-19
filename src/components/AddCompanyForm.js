@@ -9,6 +9,10 @@ import {Input, Select} from './Input'
 import {Box, Row, Column} from './Grid'
 import {Heading} from './Typography'
 
+const ErrorMessage = styled.div`
+    color: #c4270a;
+`
+
 const Button = styled.button`
   border: 1px solid ${p => p.theme.primary};
   background-color: ${p => p.theme.primary};
@@ -45,7 +49,9 @@ export default class AddCompanyForm extends React.Component {
 
   handleSubmit = addCompany => values => {
     addCompany({variables: values})
-    this.props.onCreated()
+      .then(() => {
+        this.props.onCreated()
+      })
   }
 
   render () {
@@ -56,7 +62,7 @@ export default class AddCompanyForm extends React.Component {
             <Heading align="center">add new company</Heading>
           </Box>
           <Mutation mutation={ADD_COMPANY} update={updateCompaniesCache}>
-            {(addCompany, {data}) => (
+            {(addCompany, {error}) => (
               <Formsy
                 onValidSubmit={this.handleSubmit(addCompany)}
                 onValid={this.enableButton}
@@ -66,7 +72,7 @@ export default class AddCompanyForm extends React.Component {
                   label="Company Name"
                   name="name"
                   placeholder="Company name"
-                  validations="minLength:2"
+                  validations="minLength:3"
                   validationErrors="Company name has to be longer then 2 characters"
                 />
                 <Select
@@ -88,8 +94,10 @@ export default class AddCompanyForm extends React.Component {
                   symbol="EUR"
                   required
                   min={0}
+                  max={1000000000}
                   type="number"
                 />
+                {error && <ErrorMessage>{error.message}</ErrorMessage>}
                 <Button disabled={!this.state.canSubmit}>Add new company</Button>
               </Formsy>
             )}
