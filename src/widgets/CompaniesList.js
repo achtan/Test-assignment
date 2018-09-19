@@ -7,8 +7,13 @@ import {Row, Column} from '../components/Grid'
 import Widget, {Header} from '../components/Widget'
 import AddCompany from '../components/AddCompany'
 
+const Table = styled.div`
+  min-width: 650px;
+`
+
 const List = styled.div`
   border-bottom: 1px solid ${p => p.theme.divider};
+  overflow: scroll;
 `
 
 const RowWrapper = styled.div`
@@ -19,26 +24,28 @@ const RowWrapper = styled.div`
 
 const CompaniesList = ({companies}) => (
   <Widget>
-    <Header>
-      <Row>
-        <Column width={1 / 4}><Title>company name</Title></Column>
-        <Column width={1 / 4}><Title style={{textAlign: 'right'}}>stage</Title></Column>
-        <Column width={1 / 4}><Title style={{textAlign: 'right'}}>sector</Title></Column>
-        <Column width={1 / 4}><Title style={{textAlign: 'right'}}>investment size</Title></Column>
-      </Row>
-    </Header>
-    <List>
-      {companies.map((company, i) => (
-        <RowWrapper key={i} isLast={i + 1 === companies.length}>
-          <Row>
-            <Column width={1 / 4}>{company.name}</Column>
-            <Column width={1 / 4} style={{textAlign: 'right'}}>{company.stage}</Column>
-            <Column width={1 / 4} style={{textAlign: 'right'}}>{company.sector}</Column>
-            <Column width={1 / 4} style={{textAlign: 'right'}}>{company.investmentSize} EUR</Column>
-          </Row>
-        </RowWrapper>
-      ))}
-    </List>
+    <Table>
+      <Header>
+        <Row>
+          <Column width={1 / 4}><Title>company name</Title></Column>
+          <Column width={1 / 4}><Title style={{textAlign: 'right'}}>stage</Title></Column>
+          <Column width={1 / 4}><Title style={{textAlign: 'right'}}>sector</Title></Column>
+          <Column width={1 / 4}><Title style={{textAlign: 'right'}}>investment size</Title></Column>
+        </Row>
+      </Header>
+      <List>
+        {companies.map((company, i) => (
+          <RowWrapper key={i} isLast={i + 1 === companies.length}>
+            <Row>
+              <Column width={1 / 4}>{company.name}</Column>
+              <Column width={1 / 4} style={{textAlign: 'right'}}>{company.stage}</Column>
+              <Column width={1 / 4} style={{textAlign: 'right'}}>{company.sector}</Column>
+              <Column width={1 / 4} style={{textAlign: 'right'}}>{company.investmentSize} EUR</Column>
+            </Row>
+          </RowWrapper>
+        ))}
+      </List>
+    </Table>
     <AddCompany />
   </Widget>
 )

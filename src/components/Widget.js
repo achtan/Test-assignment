@@ -10,6 +10,7 @@ const Wrapper = styled.div`
     background-color: white;
     box-shadow: 0 1px 2px 0 rgba(154, 167, 175, 0.5);
     margin-bottom: 1rem;
+    overflow: auto;
 `
 
 export const Header = styled.div`
